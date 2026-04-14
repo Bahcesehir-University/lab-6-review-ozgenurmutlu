@@ -39,9 +39,9 @@ public:
     // TODO 1a: Default constructor
     // Set name to "Unknown", id to 0, gpa to 0.0
     Student() {
-        name = "unknown";
-        id = 0 ;
-        gpa = 0.0 ;
+        name = "Unknown";
+        id = 0;
+        gpa = 0.0;
         // YOUR CODE HERE
     }
 
@@ -59,14 +59,14 @@ public:
     Student(const Student& other) {
         name = other.name;
         id = other.id;
-        gpa =other.gpa;
+        gpa = other.gpa;
         // YOUR CODE HERE
     }
 
     // TODO 1d: Destructor
     // Print: "Student [name] destroyed"
     ~Student() {
-        cout<< "student" << name <<"destroyed"<<endl;
+        cout << "Student " << name << " destroyed" << endl;
         // YOUR CODE HERE
     }
 
@@ -95,9 +95,9 @@ public:
     // TODO 3a: Setter for name
     // Name must not be empty. If empty, keep current name.
     void setName(string n) {
-         if (!n.empty()) {
+        if (!n.empty()) {
             name = n;
-         }
+        }
         // YOUR CODE HERE
     }
 
@@ -116,7 +116,8 @@ public:
     // TODO 4: getFormattedName()
     // Return the name in UPPERCASE
     // Hint: loop through each character and use toupper()
-    string getFormattedName() const { string result = name;
+    string getFormattedName() const {
+        string result = name;
         for (int i = 0; i < result.length(); i++) {
             result[i] = toupper(result[i]);
         }
@@ -137,7 +138,7 @@ public:
     // Compare by GPA (lower GPA = "less than")
     bool operator<(const Student& other) const {
         // YOUR CODE HERE
-        return gpa == other.gpa;
+        return gpa < other.gpa;
     }
 
     // TODO 5c: Stream insertion operator (<<)
@@ -145,7 +146,7 @@ public:
     // Example: "Student(Ali, ID: 101, GPA: 3.5)"
     friend ostream& operator<<(ostream& os, const Student& s) {
         // YOUR CODE HERE
-         os << "Student(" << s.name << ", ID: " << s.id << ", GPA: " << s.gpa << ")";
+        os << "Student(" << s.name << ", ID: " << s.id << ", GPA: " << s.gpa << ")";
         return os;
     }
 };
@@ -166,7 +167,7 @@ Student findBestStudent(const Student& a, const Student& b) {
 
 // Version 2: Takes an array of Students and its size, returns the one with highest GPA
 Student findBestStudent(Student arr[], int size) {
-      Student best = arr[0];
+    Student best = arr[0];
     for (int i = 1; i < size; i++) {
         if (arr[i].getGpa() > best.getGpa()) {
             best = arr[i];
